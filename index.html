@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>家族と分かち合うエンディングノート</title>  
+  <!-- 文字の形：だれにでも読みやすいUDフォント（Googleフォント） -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+<!-- いちばん上の看板 -->
+<header>
+  <img src="img/shizuku.png" alt="しずく" class="logo">
+  <h1>家族と分かち合うエンディングノート</h1>
+</header>
+
+<!-- ログインする場所 -->
+<div id="login-area" class="no-print">
+  <p id="user-name">ログインしてください</p>
+  <button id="login">Googleでログイン</button>
+  <button id="logout">ログアウト</button>
+</div>
+
+<!-- 合言葉で入る場所 -->
+<div id="room-area" class="no-print">
+  <label for="room">家族の合言葉</label>
+  <input type="text" id="room">
+  <button id="join">部屋に入る</button>
+</div>
+
+<!-- エンディングノートを書く場所 -->
+<div id="note-area" class="no-print">
+  <h2>ノートを書く</h2>
+  <label for="uname">書いた人</label>
+  <input type="text" id="uname" readonly>
+ 
+ <!-- 分野のボタン：data-cat に、出したいかたまりの名前を書いておく -->
+  <div class="cat-buttons">
+    <button class="cat-btn" data-cat="values">大切にしたいこと</button>
+    <button class="cat-btn" data-cat="medical">医療・介護</button>
+    <button class="cat-btn" data-cat="money">お金・財産</button>
+    <button class="cat-btn" data-cat="funeral">葬儀・お墓</button>
+    <button class="cat-btn" data-cat="message">大切な人へ</button>
+  </div>
+
+  <!-- ① 大切にしたいこと -->
+  <div class="cat" id="cat-values">
+    <label for="values-cherish">大切にしてきたこと</label>
+    <textarea id="values-cherish"></textarea>
+    <button class="mic" data-target="values-cherish">🎤 話して入れる</button>
+
+    <label for="values-joy">好きなこと・楽しみ</label>
+    <textarea id="values-joy"></textarea>
+    <button class="mic" data-target="values-joy">🎤 話して入れる</button>
+
+    <label for="values-future">これからやりたいこと</label>
+    <textarea id="values-future"></textarea>
+    <button class="mic" data-target="values-future">🎤 話して入れる</button>
+  </div>
+
+  <!-- ② 医療・介護 -->
+  <div class="cat" id="cat-medical">
+    <label>延命措置について</label>
+    <p class="hint">心肺蘇生、人工呼吸器、胃ろうなど、命を長らえるための治療</p>
+    <div class="choices">
+      <label><input type="radio" name="enmei" value="希望する"> 希望する</label>
+      <label><input type="radio" name="enmei" value="希望しない"> 希望しない</label>
+      <label><input type="radio" name="enmei" value="家族に任せる"> 家族に任せる</label>
+      <label><input type="radio" name="enmei" value="まだ決められない"> まだ決められない</label>
+    </div>
+    <textarea id="medical-enmeiNote" placeholder="理由や、気持ちをひとこと"></textarea>
+    <button class="mic" data-target="medical-enmeiNote">🎤 話して入れる</button>
+
+    <label>病名や余命を知りたいか</label>
+    <div class="choices">
+      <label><input type="radio" name="kokuchi" value="知りたい"> 知りたい</label>
+      <label><input type="radio" name="kokuchi" value="知りたくない"> 知りたくない</label>
+      <label><input type="radio" name="kokuchi" value="家族に任せる"> 家族に任せる</label>
+      <label><input type="radio" name="kokuchi" value="まだ決められない"> まだ決められない</label>
+    </div>
+    <textarea id="medical-kokuchiNote" placeholder="理由や、気持ちをひとこと"></textarea>
+    <button class="mic" data-target="medical-kokuchiNote">🎤 話して入れる</button>
+
+    <label for="medical-careplace">介護を受けたい場所</label>
+    <textarea id="medical-careplace"></textarea>
+    <button class="mic" data-target="medical-careplace">🎤 話して入れる</button>
+
+    <label for="medical-place">最期を迎えたい場所</label>
+    <textarea id="medical-place"></textarea>
+    <button class="mic" data-target="medical-place">🎤 話して入れる</button>
+
+    <label for="medical-proxy">自分で決められないとき、代わりに決めてほしい人</label>
+    <textarea id="medical-proxy"></textarea>
+    <button class="mic" data-target="medical-proxy">🎤 話して入れる</button>
+  </div>
+
+  <!-- ③ お金・財産 -->
+  <div class="cat" id="cat-money">
+    <p class="caution">口座番号・暗証番号・パスワードは書かないでください。家族が読む場所です。</p>
+
+    <label for="money-bank">使っている銀行や保険の会社名</label>
+    <textarea id="money-bank"></textarea>
+    <button class="mic" data-target="money-bank">🎤 話して入れる</button>
+
+    <label for="money-papers">大切な書類の置き場所</label>
+    <textarea id="money-papers"></textarea>
+    <button class="mic" data-target="money-papers">🎤 話して入れる</button>
+
+    <label for="money-will">遺言書があるか、どこにあるか</label>
+    <textarea id="money-will"></textarea>
+    <button class="mic" data-target="money-will">🎤 話して入れる</button>
+  </div>
+
+  <!-- ④ 葬儀・お墓 -->
+  <div class="cat" id="cat-funeral">
+    <label for="funeral-style">葬儀の形</label>
+    <textarea id="funeral-style"></textarea>
+    <button class="mic" data-target="funeral-style">🎤 話して入れる</button>
+
+    <label for="funeral-notify">知らせてほしい人</label>
+    <textarea id="funeral-notify"></textarea>
+    <button class="mic" data-target="funeral-notify">🎤 話して入れる</button>
+
+    <label for="funeral-grave">お墓や供養のこと</label>
+    <textarea id="funeral-grave"></textarea>
+    <button class="mic" data-target="funeral-grave">🎤 話して入れる</button>
+  </div>
+
+  <!-- ⑤ 大切な人へ -->
+  <div class="cat" id="cat-message">
+    <label for="message">大切な人へのメッセージ</label>
+    <textarea id="message" style="height:140px"></textarea>
+    <button class="mic" data-target="message">🎤 話して入れる</button>
+  </div> 
+ 
+  <button id="save">保存する</button>
+  <button id="delete">ノートを消す</button>
+</div>
+
+<!-- エンディングノートを読む場所 -->
+<div id="show-area">
+  <h2>エンディングノート</h2>
+  <div id="output">まだノートはありません。</div>
+  <button id="print" class="no-print">印刷する</button>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="module">
+
+  
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js";
+  import { getDatabase, ref, set, onValue, remove }
+    from "https://www.gstatic.com/firebasejs/13.4.0/firebase-database.js";
+  import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged }
+    from "https://www.gstatic.com/firebasejs/13.4.0/firebase-auth.js";
+  import { firebaseConfig } from "./config.js";
+
+ 
+
+    const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+  let dbRef;
+
+  // ===== ログイン =====
+  const auth = getAuth(app);                    // ログインの係を用意する
+  const provider = new GoogleAuthProvider();    // 「Googleでログインする」方法を用意する
+
+  // 「Googleでログイン」を押したとき
+  $("#login").on("click", function () {
+    signInWithPopup(auth, provider);            // 小さな窓を出して、アカウントを選んでもらう
+  });
+
+  // 「ログアウト」を押したとき
+  $("#logout").on("click", function () {
+    signOut(auth);
+  });
+
+  // ログインしているかどうかが変わったら、画面を切りかえる
+  onAuthStateChanged(auth, function (user) {
+    if (user) {
+      // ログインしている
+      $("#user-name").text(user.displayName + " さん、こんにちは");
+      $("#uname").val(user.displayName);        // 「書いた人」の欄に、ログインした人の名前を入れる
+      $("#login").hide();
+      $("#logout").show();
+      $("#room-area").show();                   // 合言葉の場所を出す
+    } else {
+      // ログインしていない
+      $("#user-name").text("ログインしてください");
+      $("#login").show();
+      $("#logout").hide();
+      $("#room-area, #note-area, #show-area").hide();   // ほかの場所は全部隠す
+      $("#room, #join").prop("disabled", false);        // 合言葉の欄を、また使えるようにもどす
+      $("#room").val("");
+      $("#note-area textarea").val("");                              // 書く欄を全部空にする
+      $("#note-area input[type='radio']").prop("checked", false);    // 丸い札も全部はずす     // 書く欄を空にする
+      $("#output").text("まだノートはありません。");      // 読む場所も空にする
+    }
+  });
+
+
+  // ===== 分野のボタン：押した分野のかたまりだけを出す =====
+  function showCat(name) {
+    $(".cat").hide();                                             // かたまりを全部かくす
+    $("#cat-" + name).show();                                     // 押された分野だけ出す
+    $(".cat-btn").removeClass("active");                          // ボタンの色を全部もどす
+    $(".cat-btn[data-cat='" + name + "']").addClass("active");    // 押されたボタンだけ色をこくする
+  }
+
+  $(".cat-btn").on("click", function () {
+    const name = $(this).attr("data-cat");    // 押されたボタンの data-cat を読む
+    showCat(name);
+  });
+
+
+  // ===== 読む場所に、1つの項目を出す（空の項目は出さない） =====
+  function addItem(title, text) {
+    if (!text) return;                                // 書いていない項目は、とばす
+    $("#output").append($("<h4>").text(title));        // 項目の名前
+    $("#output").append($("<p>").text(text));          // 書いた中身
+  }
+
+    // ===== 音声入力：🎤 を押すと、止めるまで聞きつづけて、となりの欄に入れる =====
+  const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  let rec = null;   // いま聞いている道具（聞いていないときは null ＝ からっぽ）
+
+  $(".mic").on("click", function () {
+    if (!Recognition) {
+      alert("このブラウザでは音声入力が使えません。Chrome で開いてください。");
+      return;
+    }
+
+    // もう聞いているときに押したら、止める
+    if (rec) {
+      rec.stop();
+      return;
+    }
+
+    const btn = $(this);
+    const target = $("#" + btn.attr("data-target"));  // どの欄に入れるか
+    const before = target.val();                       // 話す前に入っていた文字を、覚えておく
+
+    rec = new Recognition();
+    rec.lang = "ja-JP";
+    rec.continuous = true;                             // 止めるまで、聞きつづける
+
+    rec.onresult = function (e) {                      // 聞きとれたら（何回も来る）
+      let text = "";
+      for (let i = 0; i < e.results.length; i++) {     // これまでに聞きとった文を、全部つなげる
+        text += e.results[i][0].transcript;
+      }
+      text = text.replaceAll(" ", "");                 // 半角スペースを消す
+      target.val(before + text);                       // 「前の文字 ＋ 聞きとった文ぜんぶ」で置きかえる
+    };
+
+    rec.onend = function () {                          // 止まったら
+      btn.removeClass("listening").text("🎤 話して入れる");
+      rec = null;                                      // からっぽにもどす
+    };
+
+    btn.addClass("listening").text("■ 止める");       // 聞いているあいだは「止める」にする
+    rec.start();
+  });
+
+
+    $("#join").on("click", function () {
+    const room = $("#room").val();
+    if (room == "") {
+      alert("合言葉を入れてください");
+      return;
+    }
+
+    dbRef = ref(db, "rooms/" + room + "/note");
+
+    $("#room").prop("disabled", true);
+    $("#join").prop("disabled", true);
+
+       $("#note-area").show();
+    $("#show-area").show();
+    showCat("values");     // 部屋に入ったら、まず「大切にしたいこと」を開いておく
+
+    onValue(dbRef, function (data) {
+      const note = data.val();
+      if (note == null) {
+        $("#output").text("まだノートはありません。");
+        return;
+      }
+
+          // 荷物の中の荷物。なければ空の荷物 {} にしておく（前の形のノートでも止まらないように）
+      const values  = note.values  || {};
+      const medical = note.medical || {};
+      const money   = note.money   || {};
+      const funeral = note.funeral || {};
+
+      // --- 読む場所に出す ---
+      $("#output").empty();
+      $("#output").append($("<p>").text(note.uname + "　" + note.datetime));
+
+      $("#output").append($("<h3>").text("大切にしたいこと"));
+      addItem("大切にしてきたこと", values.cherish);
+      addItem("好きなこと・楽しみ", values.joy);
+      addItem("これからやりたいこと", values.future);
+
+      $("#output").append($("<h3>").text("医療・介護"));
+      addItem("延命措置について", medical.enmei);
+      addItem("（ひとこと）", medical.enmeiNote);
+      addItem("病名や余命を知りたいか", medical.kokuchi);
+      addItem("（ひとこと）", medical.kokuchiNote);
+      addItem("介護を受けたい場所", medical.careplace);
+      addItem("最期を迎えたい場所", medical.place);
+      addItem("代わりに決めてほしい人", medical.proxy);
+
+      $("#output").append($("<h3>").text("お金・財産"));
+      addItem("使っている銀行や保険の会社名", money.bank);
+      addItem("大切な書類の置き場所", money.papers);
+      addItem("遺言書", money.will);
+
+      $("#output").append($("<h3>").text("葬儀・お墓"));
+      addItem("葬儀の形", funeral.style);
+      addItem("知らせてほしい人", funeral.notify);
+      addItem("お墓や供養のこと", funeral.grave);
+
+      $("#output").append($("<h3>").text("大切な人へ"));
+      addItem("メッセージ", note.message);
+
+      // --- 書く欄にも戻しておく（続きを書けるように） ---
+      $("#values-cherish").val(values.cherish);
+      $("#values-joy").val(values.joy);
+      $("#values-future").val(values.future);
+
+      $("input[name='enmei'][value='" + medical.enmei + "']").prop("checked", true);
+      $("#medical-enmeiNote").val(medical.enmeiNote);
+      $("input[name='kokuchi'][value='" + medical.kokuchi + "']").prop("checked", true);
+      $("#medical-kokuchiNote").val(medical.kokuchiNote);
+      $("#medical-careplace").val(medical.careplace);
+      $("#medical-place").val(medical.place);
+      $("#medical-proxy").val(medical.proxy);
+
+      $("#money-bank").val(money.bank);
+      $("#money-papers").val(money.papers);
+      $("#money-will").val(money.will);
+
+      $("#funeral-style").val(funeral.style);
+      $("#funeral-notify").val(funeral.notify);
+      $("#funeral-grave").val(funeral.grave);
+
+      $("#message").val(note.message);
+    });
+  });
+
+  
+
+   // ===== ② 保存する：荷物の中に、分野ごとの荷物を入れる =====
+  $("#save").on("click", function () {
+    const note = {
+      uname: auth.currentUser.displayName,
+      datetime: new Date().toLocaleString("ja-JP"),
+
+      values: {
+        cherish: $("#values-cherish").val(),
+        joy:     $("#values-joy").val(),
+        future:  $("#values-future").val()
+      },
+
+      medical: {
+        enmei:       $("input[name='enmei']:checked").val() || "",    // 選ばれた丸い札。なければ空
+        enmeiNote:   $("#medical-enmeiNote").val(),
+        kokuchi:     $("input[name='kokuchi']:checked").val() || "",
+        kokuchiNote: $("#medical-kokuchiNote").val(),
+        careplace:   $("#medical-careplace").val(),
+        place:       $("#medical-place").val(),
+        proxy:       $("#medical-proxy").val()
+      },
+
+      money: {
+        bank:   $("#money-bank").val(),
+        papers: $("#money-papers").val(),
+        will:   $("#money-will").val()
+      },
+
+      funeral: {
+        style:  $("#funeral-style").val(),
+        notify: $("#funeral-notify").val(),
+        grave:  $("#funeral-grave").val()
+      },
+
+      message: $("#message").val()
+    };
+    set(dbRef, note);
+  });
+
+
+  // ③ 消すボタン：確かめてからノートを消す
+  $("#delete").on("click", function () {
+    if (confirm("ノートを消しますか？")) {
+      remove(dbRef);
+             $("#note-area textarea").val("");                       // 書く欄を全部空にする（名前は input なので残る）
+      $("#note-area input[type='radio']").prop("checked", false);    // 丸い札も全部はずす
+    }
+  });
+
+  // ④ 印刷ボタン：画面を印刷する
+  $("#print").on("click", function () {
+    window.print();
+  });
+</script>
+
+</body>
+
+</html>

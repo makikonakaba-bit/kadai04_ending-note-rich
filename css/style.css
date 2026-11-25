@@ -1,0 +1,200 @@
+
+     #room-area, #note-area, #show-area, #logout {
+    display: none;
+  }
+
+  label {
+    display: block;
+    margin-top: 12px;
+  }
+
+    input[type="text"], textarea {
+    width: 100%;
+    box-sizing: border-box;          /* 縁と内側のすきまも、幅100%の中におさめる */
+    border: 3px solid #d4a017;       /* からし色の太い縁 */
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 18px;
+    font-family: inherit;
+    background: #fff;
+    color: #1a2b4c;
+  }
+  textarea {
+    min-height: 100px;               /* 書く欄を、少し高くする */
+  }
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: #1f5fa8;           /* 書いている欄は、青い縁に変わる */
+    background: #fffbea;             /* うすいクリーム色にして、どこを書いているかわかるように */
+  }
+  input:read-only {
+    border-color: #ccc;              /* 「書いた人」（書きかえられない欄）は、灰色の縁 */
+    background: #f4f4f4;
+  }
+
+   #output {
+    margin-bottom: 16px;     /* 高さは決めずに、中身の分だけのばす */
+  }
+   body {
+    background: #ffffff;             /* 白地 */
+    color: #1a2b4c;                  /* 文字は、黒に近い紺色 */
+    font-family: "BIZ UDPGothic", "Meiryo", sans-serif;   /* UDフォント。読みこめないときはメイリオ */
+    font-size: 18px;                 /* 文字を少し大きく */
+    line-height: 1.8;                /* 行と行のあいだを広く */
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+
+   h2 {
+    color: #1f5fa8;                  /* 見出しは青 */
+    font-size: 24px;
+    border-bottom: 2px solid #1f5fa8;
+    padding-bottom: 4px;
+  }
+
+  button {
+    background: #1f5fa8;             /* 青いボタンに白い文字 */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;              /* 押しやすいように大きく */
+    font-size: 18px;
+    font-family: inherit;
+    margin: 12px 8px 0 0;
+    cursor: pointer;
+  }
+  button:disabled {
+    background: #ccc;                /* 押せないボタン（部屋に入ったあと）は灰色 */
+    cursor: default;
+  }  h2 {
+    color: #1f5fa8;                  /* 見出しは青 */
+    font-size: 24px;
+    border-bottom: 2px solid #1f5fa8;
+    padding-bottom: 4px;
+  }
+
+  #delete {
+    background: #fff;                /* 白地に */
+    color: #b3261e;                  /* 赤い文字と */
+    border: 2px solid #b3261e;       /* 赤い縁。「気をつけて押すボタン」だとわかるように */
+    margin-left: 24px;               /* 「保存する」から少しはなす */
+  }
+
+  button {
+    background: #1f5fa8;             /* 青いボタンに白い文字 */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;              /* 押しやすいように大きく */
+    font-size: 18px;
+    font-family: inherit;
+    margin: 12px 8px 0 0;
+    cursor: pointer;
+  }
+  button:disabled {
+    background: #ccc;                /* 押せないボタン（部屋に入ったあと）は灰色 */
+    cursor: default;
+  }
+   
+    header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .logo {
+    width: 56px;
+    height: auto;
+  }
+
+  header h1 {
+    font-size: 22px;
+    margin: 0;
+  }
+  
+    /* ===== 分野のボタン ===== */
+  .cat-buttons {
+    display: flex;
+    flex-wrap: wrap;               /* 入りきらないときは、次の行へ */
+    gap: 8px;
+    margin: 16px 0 8px;
+  }
+  .cat-btn {
+    background: #fff;
+    color: #1f5fa8;
+    border: 2px solid #1f5fa8;
+    margin: 0;
+  }
+  .cat-btn.active {                /* いま開いている分野のボタンは、色をこく */
+    background: #1f5fa8;
+    color: #fff;
+  }
+
+  /* ===== 分野のかたまり ===== */
+  .cat {
+    display: none;                 /* 最初は全部かくす。押された分野だけ出す */
+    border-top: 2px dashed #ccc;
+    padding-top: 4px;
+  }
+
+  /* ===== 丸い札・ひとことの説明・注意 ===== */
+  .choices label {
+    display: inline-block;         /* 札を横に並べる */
+    margin: 4px 20px 4px 0;
+  }
+  .hint {
+    font-size: 15px;
+    color: #555;
+    margin: 2px 0 4px;
+  }
+  .caution {
+    background: #fdecea;
+    color: #b3261e;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+
+  /* ===== 音声入力のボタン（動くのはステップ3から） ===== */
+  .mic {
+    background: #fff;
+    color: #1f5fa8;
+    border: 1px solid #1f5fa8;
+    font-size: 15px;
+    padding: 4px 14px;
+    margin: 6px 0 0;
+  }
+  .mic.listening {                 /* 聞いているあいだは、からし色 */
+    background: #d4a017;
+    color: #fff;
+    border-color: #d4a017;
+  }
+  
+    /* ===== 読む場所 ===== */
+  #output h3 {
+    border-bottom: 2px solid #d4a017;   /* 分野の見出しに、からし色の下線 */
+    padding-bottom: 4px;
+    margin-top: 24px;
+  }
+  #output h4 {
+    margin: 12px 0 2px;
+    font-size: 16px;
+    color: #555;                         /* 項目の名前は、少しうすく */
+  }
+  #output p {
+    margin: 0 0 8px;
+    white-space: pre-wrap;               /* 書いたときの改行を、そのまま出す */
+  }
+  
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+    #output {
+      height: auto;
+      overflow: visible;
+    }
+  
+  }
