@@ -265,7 +265,10 @@
  
   <button id="save">保存する</button>
   <button id="delete">ノートを消す</button>
+  <p id="saved-msg"></p>
 </div>
+
+<
 
 <!-- エンディングノートを読む場所 -->
 <div id="show-area">
@@ -516,7 +519,12 @@
 
       message: $("#message").val()
     };
-    set(dbRef, note);
+      set(dbRef, note).then(function () {                         // クラウドに保存できたら
+      const now = new Date();
+      const time = (now.getMonth() + 1) + "/" + now.getDate() + " "
+                 + now.getHours() + ":" + String(now.getMinutes()).padStart(2, "0");
+      $("#saved-msg").text("保存しました（" + time + "）").show().delay(4000).fadeOut();
+    });
   });
 
 

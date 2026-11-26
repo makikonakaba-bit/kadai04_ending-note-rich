@@ -240,6 +240,12 @@
     margin: 6px 0;
   }
 
+    #saved-msg {
+    color: #1a7f37;                  /* 安心の緑 */
+    font-weight: bold;
+    margin: 8px 0 0;
+  }
+  
   @media print {
     .no-print {
       display: none !important;
