@@ -268,8 +268,6 @@
   <p id="saved-msg"></p>
 </div>
 
-<
-
 <!-- エンディングノートを読む場所 -->
 <div id="show-area">
   <h2>エンディングノート</h2>
@@ -384,6 +382,7 @@
       }
       text = text.replaceAll(" ", "");                 // 半角スペースを消す
       target.val(before + text);                       // 「前の文字 ＋ 聞きとった文ぜんぶ」で置きかえる
+      unsaved = true;                                  // 話して入れたときも、書きかけ札を立てる
     };
 
     rec.onend = function () {                          // 止まったら
@@ -523,17 +522,34 @@
       const now = new Date();
       const time = (now.getMonth() + 1) + "/" + now.getDate() + " "
                  + now.getHours() + ":" + String(now.getMinutes()).padStart(2, "0");
-      $("#saved-msg").text("保存しました（" + time + "）").show().delay(4000).fadeOut();
+           $("#saved-msg").text("保存しました（" + time + "）").show().delay(4000).fadeOut();
+      unsaved = false;                                          // 保存できたので、札をたおす
     });
   });
+
 
 
   // ③ 消すボタン：確かめてからノートを消す
   $("#delete").on("click", function () {
     if (confirm("ノートを消しますか？")) {
       remove(dbRef);
-             $("#note-area textarea").val("");                       // 書く欄を全部空にする（名前は input なので残る）
+      $("#note-area textarea").val("");                              // 書く欄を全部空にする（名前は input なので残る）
       $("#note-area input[type='radio']").prop("checked", false);    // 丸い札も全部はずす
+      unsaved = false;                                               // 消したので、守るものはない
+    }
+  });
+
+  // ===== 保存しないまま閉じようとしたら、確かめる =====
+  let unsaved = false;                                          // 書きかけ札（最初はたおれている）
+
+  $("#note-area").on("input change", "textarea, input[type='radio']", function () {
+    unsaved = true;                                             // 書いたり、丸い札を選んだりしたら、札を立てる
+  });
+
+  window.addEventListener("beforeunload", function (e) {
+    if (unsaved) {                                              // 札が立っていたら
+      e.preventDefault();                                       // 閉じるのをいったん止めて、確かめる
+      e.returnValue = "";
     }
   });
 
