@@ -13,7 +13,7 @@
 <!-- いちばん上の看板 -->
 <header>
   <img src="img/shizuku.png" alt="しずく" class="logo">
-  <h1>家族と分かち合うエンディングノート</h1>
+  <h1>家族と分かち合う<wbr>エンディングノート</h1>
 </header>
 
 <!-- 字の大きさを選ぶ場所 -->
@@ -56,22 +56,54 @@
   <!-- ① 大切にしたいこと -->
   <div class="cat" id="cat-values">
     <label for="values-cherish">大切にしてきたこと</label>
+    <details class="think">
+      <summary>💡 考えるヒント（押すと開け閉めできます）</summary>
+      <ul>
+        <li>人生でいちばん大切にしてきたことは何ですか？</li>
+        <li>家族や周りの人に、受けついでほしい想いはありますか？</li>
+        <li>この想いを、言葉・手紙・話し合いのどんな形で残したいですか？</li>
+      </ul>
+    </details>
     <textarea id="values-cherish"></textarea>
     <button class="mic" data-target="values-cherish">🎤 話して入れる</button>
 
     <label for="values-joy">好きなこと・楽しみ</label>
+    <details class="think">
+      <summary>💡 考えるヒント（押すと開け閉めできます）</summary>
+      <ul>
+        <li>毎日の中で、ほっとするのはどんなときですか？</li>
+        <li>長く続けてきた趣味や、地域・仕事のつながりはありますか？</li>
+        <li>病気になっても続けたい楽しみはありますか？</li>
+      </ul>
+    </details>
     <textarea id="values-joy"></textarea>
     <button class="mic" data-target="values-joy">🎤 話して入れる</button>
 
     <label for="values-future">これからやりたいこと</label>
+    <details class="think">
+      <summary>💡 考えるヒント（押すと開け閉めできます）</summary>
+      <ul>
+        <li>元気なうちに、会っておきたい人や行きたい場所はありますか？</li>
+        <li>家族と話しておきたいことはありますか？</li>
+        <li>子や孫、これからの世代に託したい願いはありますか？</li>
+      </ul>
+    </details>
     <textarea id="values-future"></textarea>
     <button class="mic" data-target="values-future">🎤 話して入れる</button>
   </div>
 
   <!-- ② 医療・介護 -->
   <div class="cat" id="cat-medical">
-    <label>延命措置について</label>
+       <label>延命措置について</label>
     <p class="hint">心肺蘇生、人工呼吸器、胃ろうなど、命を長らえるための治療</p>
+    <details class="think">
+      <summary>💡 考えるヒント（押すと開け閉めできます）</summary>
+      <ul>
+        <li>回復の見込みが低いとき、命を延ばす治療を続けることをどう感じますか？</li>
+        <li>痛みをやわらげることと、命を延ばすことのどちらを大切にしたいですか？</li>
+        <li>そう思うのは、どんな経験や想いがあるからですか？</li>
+      </ul>
+    </details>
     <div class="choices">
       <label><input type="radio" name="enmei" value="希望する"> 希望する</label>
       <label><input type="radio" name="enmei" value="希望しない"> 希望しない</label>
@@ -82,6 +114,14 @@
     <button class="mic" data-target="medical-enmeiNote">🎤 話して入れる</button>
 
     <label>病名や余命を知りたいか</label>
+    <details class="think">
+      <summary>💡 考えるヒント（押すと開け閉めできます）</summary>
+      <ul>
+        <li>痛みをできるだけ取ることと、意識をはっきり保つことのどちらを大切にしたいですか？</li>
+        <li>知ったうえで、やっておきたいことはありますか？</li>
+        <li>このことを、家族や医療者と話したことはありますか？</li>
+      </ul>
+    </details>
     <div class="choices">
       <label><input type="radio" name="kokuchi" value="知りたい"> 知りたい</label>
       <label><input type="radio" name="kokuchi" value="知りたくない"> 知りたくない</label>
@@ -92,14 +132,38 @@
     <button class="mic" data-target="medical-kokuchiNote">🎤 話して入れる</button>
 
     <label for="medical-careplace">介護を受けたい場所</label>
+    <details class="think">
+      <summary>💡 考えるヒント（押すと開け閉めできます）</summary>
+      <ul>
+        <li>自宅・施設・病院のどこなら、心も体も安心できそうですか？</li>
+        <li>そこで、だれとどう過ごしたいですか？</li>
+        <li>希望をかなえるために、家族と話しておきたいことはありますか？</li>
+      </ul>
+    </details>
     <textarea id="medical-careplace"></textarea>
     <button class="mic" data-target="medical-careplace">🎤 話して入れる</button>
 
     <label for="medical-place">最期を迎えたい場所</label>
+    <details class="think">
+      <summary>💡 考えるヒント（押すと開け閉めできます）</summary>
+      <ul>
+        <li>最期の時間を、どこで過ごしたいですか？</li>
+        <li>そう思うのは、どんな経験や気持ちがあるからですか？</li>
+        <li>そのとき、そばにいてほしい人はいますか？</li>
+      </ul>
+    </details>
     <textarea id="medical-place"></textarea>
     <button class="mic" data-target="medical-place">🎤 話して入れる</button>
 
     <label for="medical-proxy">自分で決められないとき、代わりに決めてほしい人</label>
+    <details class="think">
+      <summary>💡 考えるヒント（押すと開け閉めできます）</summary>
+      <ul>
+        <li>自分で決められなくなったとき、だれに任せたいですか？</li>
+        <li>その人を選んだ理由は何ですか？</li>
+        <li>その人に、自分の考えをもう伝えてありますか？</li>
+      </ul>
+    </details>
     <textarea id="medical-proxy"></textarea>
     <button class="mic" data-target="medical-proxy">🎤 話して入れる</button>
   </div>
@@ -109,14 +173,38 @@
     <p class="caution">口座番号・暗証番号・パスワードは書かないでください。家族が読む場所です。</p>
 
     <label for="money-bank">使っている銀行や保険の会社名</label>
+    <details class="think">
+      <summary>💡 考えるヒント（押すと開け閉めできます）</summary>
+      <ul>
+        <li>家族がまだ知らない口座や保険はありますか？</li>
+        <li>税金・保険料・光熱費は、どの方法で払っていますか？（引き落とし・カードなど）</li>
+        <li>ローンや借入れ、名義のことで、家族に伝えておきたいことはありますか？</li>
+      </ul>
+    </details>
     <textarea id="money-bank"></textarea>
     <button class="mic" data-target="money-bank">🎤 話して入れる</button>
 
     <label for="money-papers">大切な書類の置き場所</label>
+    <details class="think">
+      <summary>💡 考えるヒント（押すと開け閉めできます）</summary>
+      <ul>
+        <li>通帳・印鑑・権利書・鍵などの置き場所を、家族は知っていますか？</li>
+        <li>スマホやパソコンの開け方は、だれに伝えてありますか？（ここには書かないでください）</li>
+        <li>何かあったとき、だれに引きついでほしいですか？</li>
+      </ul>
+    </details>
     <textarea id="money-papers"></textarea>
     <button class="mic" data-target="money-papers">🎤 話して入れる</button>
 
     <label for="money-will">遺言書があるか、どこにあるか</label>
+    <details class="think">
+      <summary>💡 考えるヒント（押すと開け閉めできます）</summary>
+      <ul>
+        <li>遺言書を書こうと思った、あるいは書いていないのはなぜですか？</li>
+        <li>家族や親族のあいだで、心配なことはありますか？</li>
+        <li>家族が争わないために、いまできることはありますか？</li>
+      </ul>
+    </details>
     <textarea id="money-will"></textarea>
     <button class="mic" data-target="money-will">🎤 話して入れる</button>
   </div>
@@ -124,14 +212,38 @@
   <!-- ④ 葬儀・お墓 -->
   <div class="cat" id="cat-funeral">
     <label for="funeral-style">葬儀の形</label>
+    <details class="think">
+      <summary>💡 考えるヒント（押すと開け閉めできます）</summary>
+      <ul>
+        <li>どんな雰囲気のお別れがよいですか？（家族葬・音楽葬・宗教の儀式など）</li>
+        <li>お別れを通して、伝えたい想いはありますか？</li>
+        <li>この希望を、周りの人に知らせてありますか？</li>
+      </ul>
+    </details>
     <textarea id="funeral-style"></textarea>
     <button class="mic" data-target="funeral-style">🎤 話して入れる</button>
 
     <label for="funeral-notify">知らせてほしい人</label>
+    <details class="think">
+      <summary>💡 考えるヒント（押すと開け閉めできます）</summary>
+      <ul>
+        <li>亡くなったとき、必ず連絡してほしい人はだれですか？</li>
+        <li>趣味・地域・仕事のつながりで、伝えてほしいグループはありますか？</li>
+        <li>連絡先は、どこにまとめてありますか？</li>
+      </ul>
+    </details>
     <textarea id="funeral-notify"></textarea>
     <button class="mic" data-target="funeral-notify">🎤 話して入れる</button>
 
     <label for="funeral-grave">お墓や供養のこと</label>
+    <details class="think">
+      <summary>💡 考えるヒント（押すと開け閉めできます）</summary>
+      <ul>
+        <li>お墓・納骨・散骨など、希望する形はありますか？</li>
+        <li>故郷やゆかりの土地など、思いを寄せる場所はありますか？</li>
+        <li>そう考えるのは、どんな想いや経験があるからですか？</li>
+      </ul>
+    </details>
     <textarea id="funeral-grave"></textarea>
     <button class="mic" data-target="funeral-grave">🎤 話して入れる</button>
   </div>
@@ -139,6 +251,14 @@
   <!-- ⑤ 大切な人へ -->
   <div class="cat" id="cat-message">
     <label for="message">大切な人へのメッセージ</label>
+    <details class="think">
+      <summary>💡 考えるヒント（押すと開け閉めできます）</summary>
+      <ul>
+        <li>だれに、どんなことを伝えておきたいですか？</li>
+        <li>ありがとう、ごめんね、と言いたい人はいますか？</li>
+        <li>子や孫に、どんなふうに育っていってほしいですか？</li>
+      </ul>
+    </details>
     <textarea id="message" style="height:140px"></textarea>
     <button class="mic" data-target="message">🎤 話して入れる</button>
   </div> 

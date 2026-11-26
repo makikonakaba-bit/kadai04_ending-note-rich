@@ -113,7 +113,7 @@
   }
 
   header h1 {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     margin: 0;
   }
   
@@ -205,6 +205,39 @@
   .size-btn.active {               /* いま選んでいる大きさは、色をこく */
     background: #1f5fa8;
     color: #fff;
+  }
+
+  /* ===== 考えるヒント（押すとひらく箱） ===== */
+  .think {
+    margin: 8px 0 12px;
+    border: 2px solid #1f5fa8;       /* 青い縁で囲んで、ボタンのように見せる */
+    border-radius: 8px;
+    background: #eef4fb;             /* うすい青 */
+  }
+  .think summary {
+    cursor: pointer;                 /* 指の形になって、押せるとわかる */
+    padding: 10px 14px;
+    font-weight: bold;
+    color: #1f5fa8;
+    list-style: none;                /* 小さい ▼ を消す */
+  }
+  .think summary::-webkit-details-marker {
+    display: none;                   /* Chrome の小さい ▼ も消す */
+  }
+  .think summary::before {
+    content: "＋ ";                  /* とじているときは「＋」 */
+  }
+  .think[open] summary::before {
+    content: "－ ";                  /* ひらいているときは「－」 */
+  }
+  .think ul {
+    margin: 0;
+    padding: 8px 16px 12px 36px;
+    background: #fff;                /* 問いは白い紙の上に */
+    border-radius: 0 0 8px 8px;
+  }
+  .think li {
+    margin: 6px 0;
   }
 
   @media print {
