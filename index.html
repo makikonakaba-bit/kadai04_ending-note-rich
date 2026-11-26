@@ -16,6 +16,14 @@
   <h1>家族と分かち合うエンディングノート</h1>
 </header>
 
+<!-- 字の大きさを選ぶ場所 -->
+<div class="size-area no-print">
+  字の大きさ：
+  <button class="size-btn" data-size="18">ふつう</button>
+  <button class="size-btn" data-size="22">大きめ</button>
+  <button class="size-btn" data-size="26">とても大きい</button>
+</div>
+
 <!-- ログインする場所 -->
 <div id="login-area" class="no-print">
   <p id="user-name">ログインしてください</p>
@@ -405,6 +413,18 @@
   $("#print").on("click", function () {
     window.print();
   });
+
+  // ===== 字の大きさ =====
+  function setSize(size) {
+    $("html").css("font-size", size + "px");                      // ものさし（1rem）を取りかえる → 全部の字がいっしょに変わる
+    $(".size-btn").removeClass("active");                         // ボタンの色を全部もどす
+    $(".size-btn[data-size='" + size + "']").addClass("active");  // 選んだボタンだけ色をこく
+    localStorage.setItem("fontSize", size);                       // 引き出しにしまって、次に開いたときも同じ大きさに
+  }
+  $(".size-btn").on("click", function () {
+    setSize($(this).attr("data-size"));
+  });
+  setSize(localStorage.getItem("fontSize") || "18");              // 開いたとき：引き出しの大きさ。なければふつう(18)
 </script>
 
 </body>

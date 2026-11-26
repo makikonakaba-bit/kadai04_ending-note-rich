@@ -1,3 +1,6 @@
+  html {
+    font-size: 18px;                 /* ものさし（1rem）。ボタンでここを取りかえる */
+  }
 
      #room-area, #note-area, #show-area, #logout {
     display: none;
@@ -14,7 +17,7 @@
     border: 3px solid #d4a017;       /* からし色の太い縁 */
     border-radius: 6px;
     padding: 10px;
-    font-size: 18px;
+    font-size: 1rem;
     font-family: inherit;
     background: #fff;
     color: #1a2b4c;
@@ -39,7 +42,7 @@
     background: #ffffff;             /* 白地 */
     color: #1a2b4c;                  /* 文字は、黒に近い紺色 */
     font-family: "BIZ UDPGothic", "Meiryo", sans-serif;   /* UDフォント。読みこめないときはメイリオ */
-    font-size: 18px;                 /* 文字を少し大きく */
+    font-size: 1rem;                 /* 文字を少し大きく */
     line-height: 1.8;                /* 行と行のあいだを広く */
     max-width: 640px;
     margin: 0 auto;
@@ -48,7 +51,7 @@
 
    h2 {
     color: #1f5fa8;                  /* 見出しは青 */
-    font-size: 24px;
+    font-size: 1.3rem;
     border-bottom: 2px solid #1f5fa8;
     padding-bottom: 4px;
   }
@@ -59,7 +62,7 @@
     border: none;
     border-radius: 8px;
     padding: 12px 24px;              /* 押しやすいように大きく */
-    font-size: 18px;
+    font-size: 1rem;
     font-family: inherit;
     margin: 12px 8px 0 0;
     cursor: pointer;
@@ -69,7 +72,7 @@
     cursor: default;
   }  h2 {
     color: #1f5fa8;                  /* 見出しは青 */
-    font-size: 24px;
+    font-size: 1.3rem;
     border-bottom: 2px solid #1f5fa8;
     padding-bottom: 4px;
   }
@@ -87,7 +90,7 @@
     border: none;
     border-radius: 8px;
     padding: 12px 24px;              /* 押しやすいように大きく */
-    font-size: 18px;
+    font-size: 1rem;
     font-family: inherit;
     margin: 12px 8px 0 0;
     cursor: pointer;
@@ -110,7 +113,7 @@
   }
 
   header h1 {
-    font-size: 22px;
+    font-size: 1.2rem;
     margin: 0;
   }
   
@@ -145,7 +148,7 @@
     margin: 4px 20px 4px 0;
   }
   .hint {
-    font-size: 15px;
+    font-size: 0.85rem;
     color: #555;
     margin: 2px 0 4px;
   }
@@ -154,7 +157,7 @@
     color: #b3261e;
     padding: 8px 12px;
     border-radius: 6px;
-    font-size: 16px;
+    font-size: 0.9rem;
   }
 
   /* ===== 音声入力のボタン（動くのはステップ3から） ===== */
@@ -162,7 +165,7 @@
     background: #fff;
     color: #1f5fa8;
     border: 1px solid #1f5fa8;
-    font-size: 15px;
+    font-size: 0.85rem;
     padding: 4px 14px;
     margin: 6px 0 0;
   }
@@ -180,14 +183,30 @@
   }
   #output h4 {
     margin: 12px 0 2px;
-    font-size: 16px;
+    font-size: 0.9rem;
     color: #555;                         /* 項目の名前は、少しうすく */
   }
   #output p {
     margin: 0 0 8px;
     white-space: pre-wrap;               /* 書いたときの改行を、そのまま出す */
   }
-  
+
+  /* ===== 字の大きさボタン ===== */
+  .size-area {
+    margin-bottom: 12px;
+  }
+  .size-btn {
+    background: #fff;
+    color: #1f5fa8;
+    border: 2px solid #1f5fa8;
+    padding: 6px 16px;
+    margin: 4px 4px 0 0;
+  }
+  .size-btn.active {               /* いま選んでいる大きさは、色をこく */
+    background: #1f5fa8;
+    color: #fff;
+  }
+
   @media print {
     .no-print {
       display: none !important;
